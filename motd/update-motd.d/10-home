@@ -1,0 +1,22 @@
+#!/bin/sh
+
+printf "\n"
+printf "                          (    )\n"
+printf "                           (    )\n"
+printf "                          (    )\n"
+printf "                            )  )\n"
+printf "                           (  (                  /\\ \n"
+printf "                            (_)                 /  \  /\\ \n"
+printf "                    ________[_]________      /\/    \/  \\ \n"
+printf "           /\      /\        ______    \    /   /\/\  /\/\\ \n"
+printf "          /  \    //_\       \    /\    \  /\/\/    \/    \\ \n"
+printf "   /\    / /\/\  //___\       \__/  \    \/\n"
+printf "  /  \  /\/    \//_____\       \ |[]|     \\ \n"
+printf " /\/\/\/       //_______\       \|__|      \\ \n"
+printf "/      \      /XXXXXXXXXX\                  \\ \n"
+printf "        \    /_I_II  I__I_\__________________\\ \n"
+printf "               I_I|  I__I_____[]_|_[]_____I\n"
+printf "               I_II  I__I_____[]_|_[]_____I\n"
+printf "               I II__I  I     XXXXXXX     I\n"
+printf "            ~~~~~\"   \"~~~~~~~~~~~~~~~~~~~~~~~~\n"
+

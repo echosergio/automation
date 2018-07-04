@@ -41,7 +41,7 @@
     To configure this settings automatically, you can use the configuration script using cURL or Wget:
 
     ```shell
-    sudo curl -o- https://raw.githubusercontent.com/sergiovhe/automation/master/Dell%20XPS/ubuntu-18.04-config.sh | bash
+    sudo curl -o- https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/ubuntu-18.04-config.sh | bash
     ```
 
 ### Setup software
@@ -49,5 +49,5 @@
 To perform an initial setup and install common software, you can use the setup script using cURL or Wget:
 
 ```shell
-sudo curl -o- https://raw.githubusercontent.com/sergiovhe/automation/master/Dell%20XPS/ubuntu-18.04-setup.sh | bash
+sudo curl -o- https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/ubuntu-18.04-setup.sh | bash
 ```
