@@ -25,8 +25,13 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 
 info "Installing Ubuntu Software..."
-sudo apt-get install -y git gitk htop vim filezilla gparted unrar meld pdfmod vlc
+sudo apt-get install -y git gitk htop vim filezilla gparted unrar meld keepassx pdfmod vlc
 sudo snap install skype --classic
+# sudo snap install spotify 
+# sudo snap install slack 
+# sudo snap install corebird 
+# sudo snap install gimp && snap connect gimp:removable-media :removable-media
+# sudo snap install intellij-idea-community --classic --edge
 
 info "Installing Java Default JRE/JDK..."
 sudo apt-get install -y default-jre
@@ -73,35 +78,6 @@ info "Installing Visual Studio Code..."
 wget https://go.microsoft.com/fwlink/?LinkID=760868 --output-document=code_amd64.deb
 sudo dpkg -i code_amd64.deb
 
-info "Installing VMware Workstation dependencies..."
-sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms
-
-info "Customizing Gnome settings..."
-sudo apt-get install -y gnome-tweak-tool
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
-gsettings set org.gnome.desktop.background show-desktop-icons false
-gsettings set org.gnome.desktop.interface clock-show-date true
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
-profile=${profile:1:-1}
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" default-size-columns 132
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" default-size-rows 43
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" foreground-color 'rgb(237,237,237)'
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-color 'rgb(0,0,0)'
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-theme-colors false
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-theme-transparency false
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-transparent-background true
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-transparency-percent 15
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" cursor-shape 'underline'
-gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
-gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
-
-info "Installing Oh My Zsh..."
-sudo apt-get install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s $(which zsh) # If you use sudo it will change the shell not for your working user but for root
-
 info "Installing Postman..."
 wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
 sudo tar -xzf postman.tar.gz -C /opt
@@ -116,6 +92,49 @@ Terminal=false
 Type=Application
 Categories=Development;
 EOL
+
+info "Customizing Gnome settings..."
+sudo apt-get install -y gnome-tweak-tool
+# GSettings is a GLib implementation of DConf, which stores its data in a binary database. 
+# The GSettings command line tool is simply a tool to access or modify settings via the GSettings API.
+# Monitor DConf for changes: dconf watch /
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.gnome.desktop.interface clock-show-date true
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+profile=${profile:1:-1} # remove leading and trailing single quotes
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" default-size-columns 132
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" default-size-rows 43
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" foreground-color 'rgb(237,237,237)'
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-color 'rgb(0,0,0)'
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-theme-colors false
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-theme-transparency false
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-transparent-background true
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-transparency-percent 15
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" cursor-shape 'underline'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
+
+# info "Installing Git Aware Terminal..."
+# npm install -g git-aware-terminal
+# touch "$HOME/.bash_profile"
+# gat install
+# cat "$HOME/.bash_profile" >> "$HOME/.bashrc"
+# rm "$HOME/.bash_profile"
+
+# info "Installing Oh My Zsh..."
+# sudo apt-get install -y zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# chsh -s $(which zsh) # If you use sudo it will change the shell not for your working user but for root
+
+# info "Installing VMware Workstation dependencies..."
+# sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms
+
+# info "Installing LaTeX..."
+# sudo apt-get install -y texlive-full
+# sudo apt-get install -y texstudio
 
 sudo apt-get -y autoremove
 sudo apt-get -y upgrade
