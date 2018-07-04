@@ -2,7 +2,7 @@
 
 ## Ubuntu 18.04 installation
 
-Setup steps:
+### Machine configuration
 
 1. BIOS Settings
 
@@ -37,4 +37,17 @@ Setup steps:
     [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation]
     "RealTimeIsUniversal"=dword:00000001
     ```
-   
+
+    To configure this settings automatically, you can use the configuration script using cURL or Wget:
+
+    ```shell
+    curl -o-  https://raw.githubusercontent.com/sergiovhe/automation/master/Dell%20XPS/ubuntu-18.04-config.sh | bash
+    ```
+
+### Setup software
+
+To perform an initial setup and install common software, you can use the setup script using cURL or Wget:
+
+```shell
+curl -o-  https://raw.githubusercontent.com/sergiovhe/automation/master/Dell%20XPS/ubuntu-18.04-setup.sh | bash
+```
