@@ -98,8 +98,8 @@ sudo apt-get install -y gnome-tweak-tool
 # GSettings is a GLib implementation of DConf, which stores its data in a binary database. 
 # The GSettings command line tool is simply a tool to access or modify settings via the GSettings API.
 # Monitor DConf for changes: dconf watch /
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
-gsettings set org.gnome.desktop.background show-desktop-icons false
+# gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+# gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
@@ -114,8 +114,8 @@ gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/prof
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-transparent-background true
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-transparency-percent 15
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" cursor-shape 'underline'
-gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
-gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
+# gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
+# gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
 
 # info "Installing Git Aware Terminal..."
 # npm install -g git-aware-terminal
