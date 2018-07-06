@@ -31,7 +31,7 @@
 
     Check the device for boot loader installation is your physical volume, usually ```/dev/sda```
 
-3. Before login switch to a tty session by pressing Ctrl+Alt+F4 (tty4)
+3. Before login switch to a tty session by pressing ```Ctrl+Alt+F4``` (tty4)
 
     Fix graphics and power management by changing the GRUB configuration:
     
@@ -40,9 +40,7 @@
     sudo update-grub
     ```
 
-    *Nouveau: Accelerated Open Source driver for NVIDIA cards  
-    *ACPI (Advanced Configuration and Power Interface): a standard for handling power management
-
+    *Keep ```quiet splash``` option if desired
 
     Set Windows as the default startup option:
     ```shell
@@ -74,7 +72,7 @@
     sudo wget -qO- https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/ubuntu-18.04-config.sh | bash
     ```
 
-### Setup software
+### Software setup 
 
 To perform an initial setup and install common software, you can use the setup script using cURL:
 
