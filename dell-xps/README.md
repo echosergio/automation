@@ -5,7 +5,7 @@
 <p align="center">
     <br>
     <img src="https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/img/xps-notebook.png" alt="Dell XPS" width="500">
-    <br><br>
+    <br>
 </p>
 
 ### Windows configuration
