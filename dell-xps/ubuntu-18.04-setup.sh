@@ -19,19 +19,19 @@ if [ $(awk '/DISTRIB_RELEASE=/' /etc/*-release | sed 's/DISTRIB_RELEASE=//') != 
 	exit 
 fi
 
-setxkbmap es
-
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 
-info "Installing Ubuntu Software..."
+info "Installing Ubuntu software..."
 sudo apt-get install -y git gitk htop vim filezilla gparted unrar meld keepassx pdfmod vlc
+
+info "Installing Snap software..."
 sudo snap install skype --classic
-# sudo snap install spotify 
-# sudo snap install slack 
-# sudo snap install corebird 
-# sudo snap install gimp && snap connect gimp:removable-media :removable-media
-# sudo snap install intellij-idea-community --classic --edge
+sudo snap install spotify 
+sudo snap install slack 
+sudo snap install corebird 
+sudo snap install gimp && snap connect gimp:removable-media :removable-media
+sudo snap install intellij-idea-community --classic --edge
 
 info "Installing Java Default JRE/JDK..."
 sudo apt-get install -y default-jre
@@ -98,8 +98,8 @@ sudo apt-get install -y gnome-tweak-tool
 # GSettings is a GLib implementation of DConf, which stores its data in a binary database. 
 # The GSettings command line tool is simply a tool to access or modify settings via the GSettings API.
 # Monitor DConf for changes: dconf watch /
-# gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
-# gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
@@ -114,8 +114,20 @@ gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/prof
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-transparent-background true
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" background-transparency-percent 15
 gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" cursor-shape 'underline'
-# gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
-# gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Left'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary>Right'
+
+info "Installing VMware Workstation dependencies..."
+sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms
+
+info "Installing Oh My Zsh..."
+sudo apt-get install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s $(which zsh) # If you use sudo it will change the shell not for your working user but for root
+
+# info "Installing LaTeX..."
+# sudo apt-get install -y texlive-full
+# sudo apt-get install -y texstudio
 
 # info "Installing Git Aware Terminal..."
 # npm install -g git-aware-terminal
@@ -123,18 +135,6 @@ gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/prof
 # gat install
 # cat "$HOME/.bash_profile" >> "$HOME/.bashrc"
 # rm "$HOME/.bash_profile"
-
-# info "Installing Oh My Zsh..."
-# sudo apt-get install -y zsh
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# chsh -s $(which zsh) # If you use sudo it will change the shell not for your working user but for root
-
-# info "Installing VMware Workstation dependencies..."
-# sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms
-
-# info "Installing LaTeX..."
-# sudo apt-get install -y texlive-full
-# sudo apt-get install -y texstudio
 
 sudo apt-get -y autoremove
 sudo apt-get -y upgrade
