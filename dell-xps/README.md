@@ -96,13 +96,13 @@ In case we need to restore our original Windows boot loader configuration we hav
 
 <p align="center">
     <br>
-    <img src="https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/img/advanced-options-startup.jpg" alt="Advanced options" width="400">
+    <img src="https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/img/advanced-options-startup.jpg" alt="Advanced options" width="500">
     <br>
 </p>
 
 3. Choose Command Prompt from the menu and enter in Diskpart utility:
 
-```shell
+```
 diskpart
 list disk (Check the Boot drive number, in our case is 0)
 lel disk 0 
@@ -114,14 +114,14 @@ exit
 
 4. Go to our drive unit and format the EFI partition in case the volume is locked by the linux bootloader
 
-```shell
+```
 V:
 format V: /FS:FAT32
 ```
 
 5. Recreate the EFI directory structure
 
-```shell
+```
 bcdboot C:\windows /s V: /f UEFI
 ```
 
