@@ -85,3 +85,44 @@ sudo wget -qO- https://raw.githubusercontent.com/sergiovhe/automation/master/del
 ```
 
 *Setup script contains some configuration and common software, feel free to update it locally to obtain a customized installation.
+
+### Restore the Windows Boot Loader
+
+In case we need to restore our original Windows boot loader configuration we have to repair the MBR from the Command Prompt in advanced options:
+
+1. From Windows, go to settings > Update & Security > Recovery > Advanced startup and click Restart now
+
+2. Select Repair Your Computer and select Troubleshoot
+
+<p align="center">
+    <br>
+    <img src="https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/img/advanced-options-startup.jpg" alt="Advanced options" width="400">
+    <br>
+</p>
+
+3. Choose Command Prompt from the menu and enter in Diskpart utility:
+
+```shell
+diskpart
+list disk (Check the Boot drive number, in our case is 0)
+lel disk 0 
+list vol (Check which volume is the EFI partition, in our case is 4)
+sel vol 4
+assign letter=V:
+exit
+```
+
+4. Go to our drive unit and format the EFI partition in case the volume is locked by the linux bootloader
+
+```shell
+V:
+format V: /FS:FAT32
+```
+
+5. Recreate the EFI directory structure
+
+```shell
+bcdboot C:\windows /s V: /f UEFI
+```
+
+6. Type exit and restart your computer
