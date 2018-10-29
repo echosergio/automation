@@ -95,7 +95,6 @@ In case we need to restore our original Windows boot loader configuration we hav
 2. Select Repair Your Computer and select Troubleshoot
 
 <p align="center">
-    <br>
     <img src="https://raw.githubusercontent.com/sergiovhe/automation/master/dell-xps/img/advanced-options-startup.jpg" alt="Advanced options" width="500">
     <br>
 </p>
